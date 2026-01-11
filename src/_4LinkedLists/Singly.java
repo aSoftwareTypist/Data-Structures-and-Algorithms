@@ -3,6 +3,9 @@ package _4LinkedLists;
 
 public class Singly<D> extends LinkedList<D> {
 
+    public Singly() {
+    }
+
     public Singly(D data) {
         length = 1;
 

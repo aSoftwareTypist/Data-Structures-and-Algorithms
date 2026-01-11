@@ -1,8 +1,6 @@
 package _4LinkedLists;
 
-import _4LinkedLists.interfaces.Linear;
-
-public abstract class LinkedList<D> implements Linear<D> {
+public abstract class LinkedList<D> {
     protected int length;
     protected Node<D> headNode;
     protected Node<D> tailNode;
@@ -38,6 +36,11 @@ public abstract class LinkedList<D> implements Linear<D> {
             return prevNode;
         };
 
+    }
+
+    LinkedList() {
+        length = 0;
+        headNode = tailNode = null;
     }
 
     // Returns the number of elements in the list.
@@ -109,9 +112,27 @@ public abstract class LinkedList<D> implements Linear<D> {
     public D getEndNodeElement() {
         if (isEmpty())
             throw new IndexOutOfBoundsException("the list is empty");
-            
+
         return tailNode.getElement();
     };
+
+    // Adds a new element to the front of the list.
+    public abstract void addFrontNode(D data);
+
+    // adds a new element to the nth node element of the list
+    public abstract void addNthNode(int index, D data);
+
+    // Adds a new element to the end of the list.
+    public abstract void addEndNode(D data);
+
+    // Removes and returns the first element of the list.
+    public abstract D removeFrontNode();
+
+    // remove and returns the nth node element of the list
+    public abstract D removeNthNode(int index);
+
+    // Removes and returns the last element of the list.
+    public abstract D removeEndNode();
 
     public void rotate() {
     };

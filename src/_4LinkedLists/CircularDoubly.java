@@ -1,8 +1,10 @@
 package _4LinkedLists;
 
-import _4LinkedLists.interfaces.Circular;
+public class CircularDoubly<D> extends LinkedList<D> {
 
-public class CircularDoubly<D> extends LinkedList<D> implements Circular<D> {
+    public CircularDoubly() {
+    }
+
     public CircularDoubly(D data) {
         length = 1;
 

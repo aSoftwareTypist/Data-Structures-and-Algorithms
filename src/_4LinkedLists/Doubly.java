@@ -2,6 +2,7 @@ package _4LinkedLists;
 
 public class Doubly<D> extends LinkedList<D> {
 
+    public Doubly() {}
     public Doubly(D data) {
         length = 1;
 

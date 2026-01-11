@@ -1,8 +1,9 @@
 package _4LinkedLists;
 
-import _4LinkedLists.interfaces.Circular;
+public class CircularSingly<D> extends LinkedList<D> {
 
-public class CircularSingly<D> extends LinkedList<D> implements Circular<D> {
+    public CircularSingly() {
+    }
 
     public CircularSingly(D data) {
         length = 1;
