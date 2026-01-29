@@ -1,0 +1,109 @@
+package _3Arrays;
+
+import javax.naming.SizeLimitExceededException;
+
+import interface_adts.ArrayADT;
+
+public class Array<D> implements ArrayADT<D> {
+
+    public static final int CAPACITY = 1000;
+    private D[] arr;
+    private int capacity;
+    private int size;
+
+    public Array() {
+        this(CAPACITY);
+    }
+
+    public Array(int capacity) {
+        size = 0;
+        this.capacity = capacity;
+        arr = (D[]) new Object[capacity];
+    }
+
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size)
+            throw new IndexOutOfBoundsException("invalid index: " + index);
+
+    }
+
+    public int size() {
+        return this.size;
+    }
+
+    public boolean isEmpty() {
+        return (size == 0);
+    }
+
+    public D get(int index) {
+        checkIndex(index);
+        return arr[index];
+    }
+
+    public void set(int index, D Value) {
+        checkIndex(index);
+        arr[index] = Value;
+    }
+
+    private void insertIfFull(int index, D value) {
+
+        D[] newArr = (D[]) new Object[++capacity];
+
+        for (int i = 0; i < size; i++) {
+            if (i < index)
+                newArr[i] = arr[i];
+            else if (i >= index)
+                newArr[i + 1] = arr[i];
+        }
+        newArr[index] = value;
+        arr = newArr;
+        size++;
+    }
+
+    public void insert(int index, D value) {
+
+        if (index < 0 || index > size)
+            throw new IndexOutOfBoundsException("invalid index: " + index);
+        if (size == capacity) {
+            insertIfFull(index, value);
+            return;
+        }
+
+        for (int i = size - 1; i >= index; i--)
+            arr[i + 1] = arr[i];
+
+        arr[index] = value;
+        size++;
+    }
+
+    public int indexOf(D value) {
+
+        for (int i = 0; i < size; i++)
+            if ((value == null && arr[i] == null) || (value != null && value.equals(arr[i])))
+                return i;
+
+        return -1;
+    }
+
+    public D remove(int index) {
+        checkIndex(index);
+
+        D temp = arr[index];
+
+        for (int i = index; i < size - 1; i++)
+            arr[i] = arr[i + 1];
+
+        arr[size - 1] = null;
+        size--;
+
+        return temp;
+    }
+
+    public void display() {
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + "\t");
+        }
+        System.out.println();
+    }
+}
