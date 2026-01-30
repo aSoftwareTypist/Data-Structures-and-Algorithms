@@ -1,24 +1,45 @@
 package _6Stacks;
 
-import interface_adts.StackADT;
+import _3Arrays.Array;
 
-public class StackArray<D> implements StackADT<D> {
-
-    public static final int CAPACITY = 1000;
-
-    private D[] data;
-
-    public StackArray() {
-        this(CAPACITY);
-    }
+public class StackArray<D> extends Stack<D> {
+    private Array<D> stack;
+    private int capacity;
 
     public StackArray(int cap) {
-        data = (D[]) new Object[cap];
+        super();
+        capacity = cap;
+        stack = new Array<D>(cap);
     }
 
-    @Override
+    public void clear() {
+        while (!isEmpty()) {
+            pop();
+        }
+    }
+
+    public void push(D ele) {
+        if (top + 1 == capacity)
+            throw new RuntimeException("stack overflow");
+
+        stack.insert(++top, ele);
+    }
+
+    public D peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("stack underflow");
+        }
+        return stack.get(top);
+    }
+
     public D pop() {
-        // TODO pop method for Array Stack
-        return null;
+        if (isEmpty())
+            throw new RuntimeException("stack underflow");
+
+        D temp = stack.get(top);
+
+        stack.set(top, null);
+        top--;
+        return temp;
     }
 }

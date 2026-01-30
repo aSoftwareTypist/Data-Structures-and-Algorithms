@@ -1,0 +1,9 @@
+=== ARRAY STACK TEST STARTED ===
+✔ Test 1 passed: Empty stack check
+✔ Test 2 passed: Push operation
+✔ Test 3 passed: Peek operation
+✔ Test 4 passed: Pop operation
+✔ Test 5 passed: LIFO behavior
+✔ Test 8 passed: Overflow handled
+✔ Test 9 passed: Stack integrity preserved
+=== ALL ARRAY STACK TESTS PASSED ===
