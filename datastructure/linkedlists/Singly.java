@@ -1,19 +1,17 @@
-package linkedlists;
+package datastructure.linkedlists;
+// import _4LinkedLists.LinkedList;
 
-import abstracts.LinkedList;
+import datastructure.abstracts.LinkedList;
 
-public class CircularDoubly<D> extends LinkedList<D> {
+public class Singly<D> extends LinkedList<D> {
 
-    public CircularDoubly() {
+    public Singly() {
     }
 
-    public CircularDoubly(D data) {
+    public Singly(D data) {
         length = 1;
 
         headNode = tailNode = new Node<D>(data);
-
-        headNode.setPrevNode(tailNode);
-        tailNode.setNextNode(headNode);
     }
 
     @Override
@@ -22,23 +20,17 @@ public class CircularDoubly<D> extends LinkedList<D> {
 
         if (isEmpty())
             tailNode = tempNode;
-
-        else {
-            headNode.setPrevNode(tempNode);
+        else
             tempNode.setNextNode(headNode);
-        }
 
         headNode = tempNode;
-        headNode.setPrevNode(tailNode);
-        tailNode.setNextNode(headNode);
 
         length++;
-
-        return;
     }
 
     @Override
     public void addNthNode(int index, D data) {
+
         if (index < 0 || index > length)
             throw new IndexOutOfBoundsException("the given position does not exist in the list");
 
@@ -50,16 +42,14 @@ public class CircularDoubly<D> extends LinkedList<D> {
             return;
         }
 
-        Node<D> newNode = new Node<D>(data), tempNode1 = headNode, tempNode2;
+        Node<D> tempNode = new Node<D>(data);
 
+        Node<D> loopNode = headNode;
         for (int i = 0; i < index - 1; i++)
-            tempNode1 = tempNode1.getNextNode();
+            loopNode = loopNode.getNextNode();
 
-        tempNode2 = tempNode1.getNextNode();
-        tempNode1.setNextNode(newNode);
-        tempNode2.setPrevNode(newNode);
-        newNode.setNextNode(tempNode2);
-        newNode.setNextNode(tempNode1);
+        tempNode.setNextNode(loopNode.getNextNode());
+        loopNode.setNextNode(tempNode);
 
         length++;
     }
@@ -70,15 +60,10 @@ public class CircularDoubly<D> extends LinkedList<D> {
 
         if (isEmpty())
             headNode = tempNode;
-
-        else {
+        else
             tailNode.setNextNode(tempNode);
-            tempNode.setPrevNode(tailNode);
-        }
 
         tailNode = tempNode;
-        tailNode.setNextNode(headNode);
-        headNode.setPrevNode(tailNode);
 
         length++;
     }
@@ -86,7 +71,7 @@ public class CircularDoubly<D> extends LinkedList<D> {
     @Override
     public D removeFrontNode() {
         if (isEmpty())
-            return null;
+            throw new IndexOutOfBoundsException("the list is empty");
 
         Node<D> tempNode = headNode;
 
@@ -95,9 +80,6 @@ public class CircularDoubly<D> extends LinkedList<D> {
 
         else {
             headNode = headNode.getNextNode();
-            headNode.setPrevNode(tailNode);
-            tailNode.setNextNode(headNode);
-            tempNode.setPrevNode(null);
             tempNode.setNextNode(null);
         }
 
@@ -119,19 +101,16 @@ public class CircularDoubly<D> extends LinkedList<D> {
         else if (index == length - 1)
             return removeEndNode();
 
-        Node<D> loopNode = headNode, tempNode, rightNode;
+        Node<D> tempNode, loopNode = headNode;
 
         for (int i = 0; i < index - 1; i++)
             loopNode = loopNode.getNextNode();
 
         tempNode = loopNode.getNextNode();
-        rightNode = tempNode.getNextNode();
-
-        loopNode.setNextNode(rightNode);
-        rightNode.setPrevNode(loopNode);
-
+        loopNode.setNextNode(tempNode.getNextNode());
         tempNode.setNextNode(null);
-        tempNode.setPrevNode(null);
+
+        length--;
 
         return tempNode.getElement();
     }
@@ -141,17 +120,19 @@ public class CircularDoubly<D> extends LinkedList<D> {
         if (isEmpty())
             throw new IndexOutOfBoundsException("the list is empty");
 
-        Node<D> tempNode = tailNode;
+        Node<D> tempNode = headNode;
 
         if (length == 1)
             headNode = tailNode = null;
 
         else {
-            tailNode = tailNode.getPrevNode();
-            tailNode.setNextNode(headNode);
-            headNode.setNextNode(tailNode);
-            tempNode.setPrevNode(null);
-            tempNode.setNextNode(null);
+            for (int i = 0; i < length - 2; i++) {
+                tempNode = tempNode.getNextNode();
+            }
+
+            tailNode = tempNode;
+            tempNode = tailNode.getNextNode();
+            tailNode.setNextNode(null);
         }
 
         length--;
@@ -159,11 +140,4 @@ public class CircularDoubly<D> extends LinkedList<D> {
         return tempNode.getElement();
     }
 
-    @Override
-    public void rotate() {
-        headNode = headNode.getPrevNode();
-        tailNode = tailNode.getPrevNode();
-
-        return;
-    }
 }

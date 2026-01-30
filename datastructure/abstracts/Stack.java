@@ -1,6 +1,6 @@
-package abstracts;
+package datastructure.abstracts;
 
-import interfaces.adts.StackADT;
+import datastructure.interfaces.adts.StackADT;
 
 public abstract class Stack<D> implements StackADT<D> {
     protected int top;

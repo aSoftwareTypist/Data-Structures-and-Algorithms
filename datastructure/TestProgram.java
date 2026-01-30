@@ -1,4 +1,5 @@
-import tests.*;
+package datastructure;
+import datastructure.tests.*;
 
 public class TestProgram {
 

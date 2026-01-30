@@ -1,6 +1,6 @@
-package abstracts;
+package datastructure.abstracts;
 
-import interfaces.adts.LinkedListADT;
+import datastructure.interfaces.adts.LinkedListADT;
 
 public abstract class LinkedList<D> implements LinkedListADT<D> {
     protected int length;

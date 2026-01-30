@@ -1,4 +1,4 @@
-package interfaces.adts;
+package datastructure.interfaces.adts;
 
 /*
 ∗ A collection of objects that are inserted and removed according to the last-in

@@ -1,7 +1,7 @@
-package stacks;
+package datastructure.stacks;
 
-import arrays.Array;
-import abstracts.Stack;
+import datastructure.abstracts.Stack;
+import datastructure.arrays.Array;
 
 public class StackArray<D> extends Stack<D> {
     private Array<D> stack;

@@ -1,38 +1,37 @@
-package linkedlists;
+package datastructure.linkedlists;
 
-import abstracts.LinkedList;
+import datastructure.abstracts.LinkedList;
 
-public class CircularSingly<D> extends LinkedList<D> {
+public class Doubly<D> extends LinkedList<D> {
 
-    public CircularSingly() {
+    public Doubly() {
     }
 
-    public CircularSingly(D data) {
+    public Doubly(D data) {
         length = 1;
 
         headNode = tailNode = new Node<D>(data);
-
-        tailNode.setNextNode(headNode);
     }
 
     @Override
     public void addFrontNode(D data) {
-        Node<D> tempNode = new Node<D>(data);
+        Node<D> newNode = new Node<D>(data);
 
         if (isEmpty())
-            tailNode = tempNode;
-        else
-            tempNode.setNextNode(headNode);
+            tailNode = newNode;
 
-        headNode = tempNode;
-        tailNode.setNextNode(headNode);
+        else {
+            headNode.setPrevNode(newNode);
+            newNode.setNextNode(headNode);
+        }
+
+        headNode = newNode;
 
         length++;
     }
 
     @Override
     public void addNthNode(int index, D data) {
-
         if (index < 0 || index > length)
             throw new IndexOutOfBoundsException("the given position does not exist in the list");
 
@@ -44,30 +43,33 @@ public class CircularSingly<D> extends LinkedList<D> {
             return;
         }
 
-        Node<D> tempNode = new Node<D>(data);
+        Node<D> newNode = new Node<D>(data), loopNode = headNode, tempNode;
 
-        Node<D> loopNode = headNode;
         for (int i = 0; i < index - 1; i++)
             loopNode = loopNode.getNextNode();
 
-        tempNode.setNextNode(loopNode.getNextNode());
-        loopNode.setNextNode(tempNode);
+        tempNode = loopNode.getNextNode();
+        loopNode.setNextNode(newNode);
+        tempNode.setPrevNode(newNode);
+        newNode.setNextNode(tempNode);
+        newNode.setNextNode(loopNode);
 
         length++;
     }
 
     @Override
     public void addEndNode(D data) {
-        Node<D> tempNode = new Node<D>(data);
+        Node<D> newNode = new Node<D>(data);
 
         if (isEmpty())
-            headNode = tempNode;
+            headNode = newNode;
 
-        else
-            tailNode.setNextNode(tempNode);
+        else {
+            tailNode.setNextNode(newNode);
+            newNode.setPrevNode(tailNode);
+        }
 
-        tailNode = tempNode;
-        tailNode.setNextNode(headNode);
+        tailNode = newNode;
 
         length++;
     }
@@ -84,8 +86,7 @@ public class CircularSingly<D> extends LinkedList<D> {
 
         else {
             headNode = headNode.getNextNode();
-
-            tailNode.setNextNode(headNode);
+            headNode.setPrevNode(null);
             tempNode.setNextNode(null);
         }
 
@@ -107,16 +108,19 @@ public class CircularSingly<D> extends LinkedList<D> {
         else if (index == length - 1)
             return removeEndNode();
 
-        Node<D> tempNode, loopNode = headNode;
+        Node<D> loopNode = headNode, tempNode, rightNode;
 
         for (int i = 0; i < index - 1; i++)
             loopNode = loopNode.getNextNode();
 
         tempNode = loopNode.getNextNode();
-        loopNode.setNextNode(tempNode.getNextNode());
-        tempNode.setNextNode(null);
+        rightNode = tempNode.getNextNode();
 
-        length--;
+        loopNode.setNextNode(rightNode);
+        rightNode.setPrevNode(loopNode);
+
+        tempNode.setNextNode(null);
+        tempNode.setPrevNode(null);
 
         return tempNode.getElement();
     }
@@ -126,39 +130,20 @@ public class CircularSingly<D> extends LinkedList<D> {
         if (isEmpty())
             throw new IndexOutOfBoundsException("the list is empty");
 
-        Node<D> tempNode = headNode;
+        Node<D> tempNode = tailNode;
 
         if (length == 1)
             headNode = tailNode = null;
 
         else {
-            for (int i = 0; i < length - 2; i++)
-                tempNode = tempNode.getNextNode();
-
-            tailNode = tempNode;
-            tempNode = tailNode.getNextNode();
-            tailNode.setNextNode(headNode);
+            tailNode = tailNode.getPrevNode();
+            tailNode.setNextNode(null);
+            tempNode.setPrevNode(null);
         }
 
         length--;
 
         return tempNode.getElement();
-    }
-
-    public void rotate() {
-        if (isEmpty())
-            throw new IndexOutOfBoundsException("the list is empty");
-
-        if (length == 1)
-            return;
-
-        Node<D> loopNode = headNode;
-        for (int i = 0; i < length - 2; i++)
-            loopNode = loopNode.getNextNode();
-
-        headNode = tailNode;
-        tailNode = loopNode;
-
     }
 
 }
