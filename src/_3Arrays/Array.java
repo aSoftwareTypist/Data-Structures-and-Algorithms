@@ -1,7 +1,5 @@
 package _3Arrays;
 
-import javax.naming.SizeLimitExceededException;
-
 import interface_adts.ArrayADT;
 
 public class Array<D> implements ArrayADT<D> {
@@ -99,10 +97,10 @@ public class Array<D> implements ArrayADT<D> {
         return temp;
     }
 
-    public void display() {
-
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + "\t");
+    public static <D> void display(Array<D> array) {
+        System.out.print("Array (size = " + array.size() + "): ");
+        for (int i = 0; i < array.size(); i++) {
+            System.out.print(array.get(i) + "\t");
         }
         System.out.println();
     }

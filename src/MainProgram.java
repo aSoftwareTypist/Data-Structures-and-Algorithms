@@ -1,5 +1,5 @@
 import Book.Arrays.ScoreBoard;
-import _3Arrays.Array;
+import tests.ArrayTest;
 import Book.Arrays.GameEntry;
 
 // import tests.LinkedListProgram;
@@ -17,15 +17,7 @@ public class MainProgram {
         }
 
         public static void main(String[] args) {
-                // LinkedListProgram.testProgram();
-                Array<Integer> array = new Array<Integer>(2);
-                array.insert(0, 99);
-                array.insert(1, 99);
-                array.set(0, 54);
-                array.insert(0, 3);
-                array.insert(3, 32);
-                System.out.println(array.indexOf(99));
-                array.display();
+                ArrayTest.testCases();
 
         }
 }

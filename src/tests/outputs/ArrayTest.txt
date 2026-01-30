@@ -1,0 +1,39 @@
+=== Initial State ===
+Array (size = 0): 
+
+=== Insert Elements ===
+Array (size = 3): 10	20	30	
+
+=== Insert At Middle ===
+Array (size = 4): 10	15	20	30	
+
+=== Get Elements ===
+Element at index 2: 20
+
+=== Set Element ===
+Array (size = 4): 10	15	99	30	
+
+=== indexOf Tests ===
+Index of 99: 2
+Index of 100 (not present): -1
+
+=== Remove Element ===
+Removed: 15
+Array (size = 3): 10	99	30	
+
+=== Remove First Element ===
+Array (size = 2): 99	30	
+
+=== Remove Last Element ===
+Array (size = 1): 99	
+
+=== Empty Check ===
+Is empty? false
+
+=== Remove All ===
+Array (size = 0): 
+
+Is empty now? true
+
+=== Boundary Case (Exception Expected) ===
+Caught exception: java.lang.IndexOutOfBoundsException: invalid index: 0

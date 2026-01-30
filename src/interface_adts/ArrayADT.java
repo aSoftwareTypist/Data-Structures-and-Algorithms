@@ -25,5 +25,6 @@ public interface ArrayADT<D> {
     D remove(int index);
 
     // Optional: display all elements
-    void display();
+    // static void display(ArrayADT<D> array) {
+    // };
 }
