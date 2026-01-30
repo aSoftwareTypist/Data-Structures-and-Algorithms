@@ -1,9 +1,6 @@
 import Book.Arrays.ScoreBoard;
-import tests.ArrayTest;
-import tests.StackTest;
+import tests.*;
 import Book.Arrays.GameEntry;
-
-// import tests.LinkedListProgram;
 
 public class MainProgram {
         public static void gameScore() {
@@ -18,7 +15,9 @@ public class MainProgram {
         }
 
         public static void main(String[] args) {
-                ArrayTest.testCases();
-                StackTest.arrayStackTest();
+                // ArrayTest.testCases();
+                // StackTest.testStackArray();
+                StackTest.testStackLinkedList();
+                // LinkedListTest.testProgram();
         }
 }

@@ -5,7 +5,6 @@ import abstracts.LinkedList;
 public class Doubly<D> extends LinkedList<D> {
 
     public Doubly() {
-        this(null);
     }
 
     public Doubly(D data) {

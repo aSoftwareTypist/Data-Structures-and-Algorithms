@@ -5,7 +5,6 @@ import abstracts.LinkedList;
 public class CircularDoubly<D> extends LinkedList<D> {
 
     public CircularDoubly() {
-        this(null);
     }
 
     public CircularDoubly(D data) {

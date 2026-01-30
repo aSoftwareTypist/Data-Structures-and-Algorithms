@@ -13,12 +13,6 @@ public class StackArray<D> extends Stack<D> {
         stack = new Array<D>(cap);
     }
 
-    public void clear() {
-        while (!isEmpty()) {
-            pop();
-        }
-    }
-
     public void push(D ele) {
         if (top + 1 == capacity)
             throw new RuntimeException("stack overflow");

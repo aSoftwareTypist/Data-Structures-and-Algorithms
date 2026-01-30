@@ -16,4 +16,9 @@ public abstract class Stack<D> implements StackADT<D> {
     public boolean isEmpty() {
         return (top == -1);
     }
+
+    public void clear() {
+        while (!isEmpty())
+            pop();
+    }
 }

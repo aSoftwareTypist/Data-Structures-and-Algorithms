@@ -6,7 +6,6 @@ import abstracts.LinkedList;
 public class Singly<D> extends LinkedList<D> {
 
     public Singly() {
-        this(null);
     }
 
     public Singly(D data) {
