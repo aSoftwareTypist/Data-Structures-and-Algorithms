@@ -1,33 +1,40 @@
-package _4LinkedLists;
+package linkedlists;
 
 import abstracts.LinkedList;
 
-public class Doubly<D> extends LinkedList<D> {
+public class CircularDoubly<D> extends LinkedList<D> {
 
-    public Doubly() {
+    public CircularDoubly() {
     }
 
-    public Doubly(D data) {
+    public CircularDoubly(D data) {
         length = 1;
 
         headNode = tailNode = new Node<D>(data);
+
+        headNode.setPrevNode(tailNode);
+        tailNode.setNextNode(headNode);
     }
 
     @Override
     public void addFrontNode(D data) {
-        Node<D> newNode = new Node<D>(data);
+        Node<D> tempNode = new Node<D>(data);
 
         if (isEmpty())
-            tailNode = newNode;
+            tailNode = tempNode;
 
         else {
-            headNode.setPrevNode(newNode);
-            newNode.setNextNode(headNode);
+            headNode.setPrevNode(tempNode);
+            tempNode.setNextNode(headNode);
         }
 
-        headNode = newNode;
+        headNode = tempNode;
+        headNode.setPrevNode(tailNode);
+        tailNode.setNextNode(headNode);
 
         length++;
+
+        return;
     }
 
     @Override
@@ -43,33 +50,35 @@ public class Doubly<D> extends LinkedList<D> {
             return;
         }
 
-        Node<D> newNode = new Node<D>(data), loopNode = headNode, tempNode;
+        Node<D> newNode = new Node<D>(data), tempNode1 = headNode, tempNode2;
 
         for (int i = 0; i < index - 1; i++)
-            loopNode = loopNode.getNextNode();
+            tempNode1 = tempNode1.getNextNode();
 
-        tempNode = loopNode.getNextNode();
-        loopNode.setNextNode(newNode);
-        tempNode.setPrevNode(newNode);
-        newNode.setNextNode(tempNode);
-        newNode.setNextNode(loopNode);
+        tempNode2 = tempNode1.getNextNode();
+        tempNode1.setNextNode(newNode);
+        tempNode2.setPrevNode(newNode);
+        newNode.setNextNode(tempNode2);
+        newNode.setNextNode(tempNode1);
 
         length++;
     }
 
     @Override
     public void addEndNode(D data) {
-        Node<D> newNode = new Node<D>(data);
+        Node<D> tempNode = new Node<D>(data);
 
         if (isEmpty())
-            headNode = newNode;
+            headNode = tempNode;
 
         else {
-            tailNode.setNextNode(newNode);
-            newNode.setPrevNode(tailNode);
+            tailNode.setNextNode(tempNode);
+            tempNode.setPrevNode(tailNode);
         }
 
-        tailNode = newNode;
+        tailNode = tempNode;
+        tailNode.setNextNode(headNode);
+        headNode.setPrevNode(tailNode);
 
         length++;
     }
@@ -77,7 +86,7 @@ public class Doubly<D> extends LinkedList<D> {
     @Override
     public D removeFrontNode() {
         if (isEmpty())
-            throw new IndexOutOfBoundsException("the list is empty");
+            return null;
 
         Node<D> tempNode = headNode;
 
@@ -86,7 +95,9 @@ public class Doubly<D> extends LinkedList<D> {
 
         else {
             headNode = headNode.getNextNode();
-            headNode.setPrevNode(null);
+            headNode.setPrevNode(tailNode);
+            tailNode.setNextNode(headNode);
+            tempNode.setPrevNode(null);
             tempNode.setNextNode(null);
         }
 
@@ -137,8 +148,10 @@ public class Doubly<D> extends LinkedList<D> {
 
         else {
             tailNode = tailNode.getPrevNode();
-            tailNode.setNextNode(null);
+            tailNode.setNextNode(headNode);
+            headNode.setNextNode(tailNode);
             tempNode.setPrevNode(null);
+            tempNode.setNextNode(null);
         }
 
         length--;
@@ -146,4 +159,11 @@ public class Doubly<D> extends LinkedList<D> {
         return tempNode.getElement();
     }
 
+    @Override
+    public void rotate() {
+        headNode = headNode.getPrevNode();
+        tailNode = tailNode.getPrevNode();
+
+        return;
+    }
 }

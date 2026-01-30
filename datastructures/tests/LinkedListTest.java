@@ -1,6 +1,6 @@
 package tests;
 
-import _4LinkedLists.Singly;
+import linkedlists.Singly;
 import abstracts.LinkedList;
 
 public class LinkedListTest {

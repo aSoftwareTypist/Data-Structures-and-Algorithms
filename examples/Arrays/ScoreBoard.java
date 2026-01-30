@@ -1,6 +1,4 @@
-package Book.Arrays;
-
-import Book.Arrays.GameEntry;
+package examples.Arrays;
 
 public class ScoreBoard {
 

@@ -1,4 +1,4 @@
-package _3Arrays;
+package arrays;
 
 import interfaces.adts.ArrayADT;
 
@@ -13,6 +13,7 @@ public class Array<D> implements ArrayADT<D> {
         this(CAPACITY);
     }
 
+    @SuppressWarnings("unchecked")
     public Array(int capacity) {
         size = 0;
         this.capacity = capacity;
@@ -43,6 +44,7 @@ public class Array<D> implements ArrayADT<D> {
         arr[index] = Value;
     }
 
+    @SuppressWarnings("unchecked")
     private void insertIfFull(int index, D value) {
 
         D[] newArr = (D[]) new Object[++capacity];

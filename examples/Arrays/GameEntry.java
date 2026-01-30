@@ -1,4 +1,4 @@
-package Book.Arrays;
+package examples.Arrays;
 
 public class GameEntry{
 

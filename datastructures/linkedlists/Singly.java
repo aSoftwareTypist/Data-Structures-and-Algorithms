@@ -1,18 +1,17 @@
-package _4LinkedLists;
+package linkedlists;
+// import _4LinkedLists.LinkedList;
 
 import abstracts.LinkedList;
 
-public class CircularSingly<D> extends LinkedList<D> {
+public class Singly<D> extends LinkedList<D> {
 
-    public CircularSingly() {
+    public Singly() {
     }
 
-    public CircularSingly(D data) {
+    public Singly(D data) {
         length = 1;
 
         headNode = tailNode = new Node<D>(data);
-
-        tailNode.setNextNode(headNode);
     }
 
     @Override
@@ -25,7 +24,6 @@ public class CircularSingly<D> extends LinkedList<D> {
             tempNode.setNextNode(headNode);
 
         headNode = tempNode;
-        tailNode.setNextNode(headNode);
 
         length++;
     }
@@ -62,12 +60,10 @@ public class CircularSingly<D> extends LinkedList<D> {
 
         if (isEmpty())
             headNode = tempNode;
-
         else
             tailNode.setNextNode(tempNode);
 
         tailNode = tempNode;
-        tailNode.setNextNode(headNode);
 
         length++;
     }
@@ -84,8 +80,6 @@ public class CircularSingly<D> extends LinkedList<D> {
 
         else {
             headNode = headNode.getNextNode();
-
-            tailNode.setNextNode(headNode);
             tempNode.setNextNode(null);
         }
 
@@ -132,33 +126,18 @@ public class CircularSingly<D> extends LinkedList<D> {
             headNode = tailNode = null;
 
         else {
-            for (int i = 0; i < length - 2; i++)
+            for (int i = 0; i < length - 2; i++) {
                 tempNode = tempNode.getNextNode();
+            }
 
             tailNode = tempNode;
             tempNode = tailNode.getNextNode();
-            tailNode.setNextNode(headNode);
+            tailNode.setNextNode(null);
         }
 
         length--;
 
         return tempNode.getElement();
-    }
-
-    public void rotate() {
-        if (isEmpty())
-            throw new IndexOutOfBoundsException("the list is empty");
-
-        if (length == 1)
-            return;
-
-        Node<D> loopNode = headNode;
-        for (int i = 0; i < length - 2; i++)
-            loopNode = loopNode.getNextNode();
-
-        headNode = tailNode;
-        tailNode = loopNode;
-
     }
 
 }

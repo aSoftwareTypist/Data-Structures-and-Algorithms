@@ -1,6 +1,6 @@
 package tests;
 
-import _3Arrays.Array;
+import arrays.Array;
 
 public class ArrayTest {
 

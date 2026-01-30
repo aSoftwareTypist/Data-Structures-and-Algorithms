@@ -1,7 +1,7 @@
 package tests;
 
-import _6Stacks.StackArray;
-import _6Stacks.StackLinkedList;
+import stacks.StackArray;
+import stacks.StackLinkedList;
 import abstracts.Stack;
 
 public class StackTest {

@@ -1,9 +1,9 @@
-package _6Stacks;
+package stacks;
 
 import abstracts.LinkedList;
 import abstracts.Stack;
 
-import _4LinkedLists.Singly;
+import linkedlists.Singly;
 
 public class StackLinkedList<D> extends Stack<D> {
 
