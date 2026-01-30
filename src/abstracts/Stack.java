@@ -1,6 +1,6 @@
-package _6Stacks;
+package abstracts;
 
-import interface_adts.StackADT;
+import interfaces.adts.StackADT;
 
 public abstract class Stack<D> implements StackADT<D> {
     protected int top;

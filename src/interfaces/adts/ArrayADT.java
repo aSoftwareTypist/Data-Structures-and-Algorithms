@@ -1,4 +1,4 @@
-package interface_adts;
+package interfaces.adts;
 
 // ArrayADT.java
 public interface ArrayADT<D> {

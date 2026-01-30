@@ -1,9 +1,12 @@
 package _4LinkedLists;
 // import _4LinkedLists.LinkedList;
 
+import abstracts.LinkedList;
+
 public class Singly<D> extends LinkedList<D> {
 
     public Singly() {
+        this(null);
     }
 
     public Singly(D data) {

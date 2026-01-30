@@ -1,8 +1,13 @@
 package _4LinkedLists;
 
+import abstracts.LinkedList;
+
 public class Doubly<D> extends LinkedList<D> {
 
-    public Doubly() {}
+    public Doubly() {
+        this(null);
+    }
+
     public Doubly(D data) {
         length = 1;
 

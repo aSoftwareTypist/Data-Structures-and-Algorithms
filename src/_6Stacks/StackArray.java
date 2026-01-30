@@ -1,6 +1,7 @@
 package _6Stacks;
 
 import _3Arrays.Array;
+import abstracts.Stack;
 
 public class StackArray<D> extends Stack<D> {
     private Array<D> stack;

@@ -18,7 +18,7 @@ public class MainProgram {
         }
 
         public static void main(String[] args) {
-                // ArrayTest.testCases();
+                ArrayTest.testCases();
                 StackTest.arrayStackTest();
         }
 }

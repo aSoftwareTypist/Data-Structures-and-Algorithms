@@ -1,6 +1,6 @@
 package _3Arrays;
 
-import interface_adts.ArrayADT;
+import interfaces.adts.ArrayADT;
 
 public class Array<D> implements ArrayADT<D> {
 

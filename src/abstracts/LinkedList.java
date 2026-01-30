@@ -1,6 +1,8 @@
-package _4LinkedLists;
+package abstracts;
 
-public abstract class LinkedList<D> {
+import interfaces.adts.LinkedListADT;
+
+public abstract class LinkedList<D> implements LinkedListADT<D> {
     protected int length;
     protected Node<D> headNode;
     protected Node<D> tailNode;
@@ -38,7 +40,7 @@ public abstract class LinkedList<D> {
 
     }
 
-    LinkedList() {
+    protected LinkedList() {
         length = 0;
         headNode = tailNode = null;
     }
@@ -78,7 +80,7 @@ public abstract class LinkedList<D> {
     }
 
     // Returns (but does not remove) the first element in the list.
-    public D getfrontNodeElement() {
+    public D getFrontNodeElement() {
         if (isEmpty())
             throw new IndexOutOfBoundsException("the list is empty");
 
@@ -94,7 +96,7 @@ public abstract class LinkedList<D> {
             throw new IndexOutOfBoundsException("the given position does not exist in the list");
 
         if (index == 0)
-            return getfrontNodeElement();
+            return getFrontNodeElement();
         else if (index == length - 1)
             return getEndNodeElement();
 
@@ -116,24 +118,4 @@ public abstract class LinkedList<D> {
         return tailNode.getElement();
     };
 
-    // Adds a new element to the front of the list.
-    public abstract void addFrontNode(D data);
-
-    // adds a new element to the nth node element of the list
-    public abstract void addNthNode(int index, D data);
-
-    // Adds a new element to the end of the list.
-    public abstract void addEndNode(D data);
-
-    // Removes and returns the first element of the list.
-    public abstract D removeFrontNode();
-
-    // remove and returns the nth node element of the list
-    public abstract D removeNthNode(int index);
-
-    // Removes and returns the last element of the list.
-    public abstract D removeEndNode();
-
-    public void rotate() {
-    };
 }

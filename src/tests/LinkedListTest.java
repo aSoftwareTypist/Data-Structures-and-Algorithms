@@ -1,9 +1,9 @@
 package tests;
 
-import _4LinkedLists.LinkedList;
 import _4LinkedLists.Singly;
+import abstracts.LinkedList;
 
-public class LinkedListProgram {
+public class LinkedListTest {
     public static void testProgram() {
         try {
 
@@ -36,7 +36,7 @@ public class LinkedListProgram {
             list.addFrontNode(10);
             list.displayList();
 
-            System.out.println("Front: " + list.getfrontNodeElement());
+            System.out.println("Front: " + list.getFrontNodeElement());
             System.out.println("Nth(0): " + list.getNthNodeElement(0));
             System.out.println("End: " + list.getEndNodeElement());
 
@@ -62,7 +62,7 @@ public class LinkedListProgram {
             list.displayList();
 
             System.out.println("\n===== GET TEST =====");
-            System.out.println("Front: " + list.getfrontNodeElement());
+            System.out.println("Front: " + list.getFrontNodeElement());
             System.out.println("Nth(3): " + list.getNthNodeElement(3));
             System.out.println("End: " + list.getEndNodeElement());
 

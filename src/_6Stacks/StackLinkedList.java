@@ -1,6 +1,7 @@
 package _6Stacks;
 
-import _4LinkedLists.LinkedList;
+import abstracts.LinkedList;
+import abstracts.Stack;
 
 public class StackLinkedList<D> extends Stack<D> {
 

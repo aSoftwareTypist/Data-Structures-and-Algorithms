@@ -1,8 +1,11 @@
 package _4LinkedLists;
 
+import abstracts.LinkedList;
+
 public class CircularSingly<D> extends LinkedList<D> {
 
     public CircularSingly() {
+        this(null);
     }
 
     public CircularSingly(D data) {
