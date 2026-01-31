@@ -7,6 +7,10 @@ public class StackArray<D> extends Stack<D> {
     private Array<D> stack;
     private int capacity;
 
+    public boolean isFull() {
+        return top == capacity;
+    }
+
     public StackArray(int cap) {
         super();
         capacity = cap;

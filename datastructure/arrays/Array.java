@@ -39,9 +39,9 @@ public class Array<D> implements ArrayADT<D> {
         return arr[index];
     }
 
-    public void set(int index, D Value) {
+    public void set(int index, D value) {
         checkIndex(index);
-        arr[index] = Value;
+        arr[index] = value;
     }
 
     @SuppressWarnings("unchecked")
