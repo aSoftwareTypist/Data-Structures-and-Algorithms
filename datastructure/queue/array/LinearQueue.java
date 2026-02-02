@@ -13,9 +13,6 @@ public class LinearQueue<D> extends Queue<D> {
         queue = new Array<D>(capacity);
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
 
     public boolean isFull() {
         return size == capacity;

@@ -4,9 +4,9 @@ import datastructure.interfaces.adts.ArrayADT;
 
 public class Array<D> implements ArrayADT<D> {
 
-    public static final int CAPACITY = 1000;
+    private static final int CAPACITY = 1000;
     private D[] arr;
-    private int capacity;
+    public int length;
     private int size;
 
     public Array() {
@@ -16,7 +16,7 @@ public class Array<D> implements ArrayADT<D> {
     @SuppressWarnings("unchecked")
     public Array(int capacity) {
         size = 0;
-        this.capacity = capacity;
+        this.length = capacity;
         arr = (D[]) new Object[capacity];
     }
 
@@ -34,6 +34,10 @@ public class Array<D> implements ArrayADT<D> {
         return (size == 0);
     }
 
+    public boolean isFull() {
+        return size == length;
+    }
+
     public D get(int index) {
         checkIndex(index);
         return arr[index];
@@ -45,9 +49,11 @@ public class Array<D> implements ArrayADT<D> {
     }
 
     @SuppressWarnings("unchecked")
-    private void insertIfFull(int index, D value) {
+    public void insertIfFull(int index, D value) {
+        if (index < 0 || index > length)
+            throw new IndexOutOfBoundsException("invalid index: " + index);
 
-        D[] newArr = (D[]) new Object[++capacity];
+        D[] newArr = (D[]) new Object[++length];
 
         for (int i = 0; i < size; i++) {
             if (i < index)
@@ -62,11 +68,10 @@ public class Array<D> implements ArrayADT<D> {
 
     public void insert(int index, D value) {
 
-        if (index < 0 || index > size)
+        if (index < 0 || index > length)
             throw new IndexOutOfBoundsException("invalid index: " + index);
-        if (size == capacity) {
-            insertIfFull(index, value);
-            return;
+        if (size == length) {
+            throw new RuntimeException("array is full");
         }
 
         for (int i = size - 1; i >= index; i--)
@@ -100,8 +105,8 @@ public class Array<D> implements ArrayADT<D> {
     }
 
     public static <D> void display(Array<D> array) {
-        System.out.print("Array (size = " + array.size() + "): ");
-        for (int i = 0; i < array.size(); i++) {
+        System.out.print("Array (length = " + array.length + "): ");
+        for (int i = 0; i < array.length; i++) {
             System.out.print(array.get(i) + "\t");
         }
         System.out.println();

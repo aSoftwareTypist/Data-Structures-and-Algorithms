@@ -17,8 +17,9 @@ public abstract class Queue<D> implements QueueADT<D> {
     }
 
     public boolean isEmpty() {
-        return front == -1;
+        return size == 0;
     }
+    
 
     public void clear() {
         while (!isEmpty())

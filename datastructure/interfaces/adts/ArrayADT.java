@@ -15,6 +15,8 @@ public interface ArrayADT<D> {
     // Check if the array is empty
     boolean isEmpty();
 
+    boolean isFull();
+
     // Search for an element and return its index, -1 if not found
     int indexOf(D value);
 
