@@ -68,9 +68,11 @@ public class Array<D> implements ArrayADT<D> {
 
     public void insert(int index, D value) {
 
-        checkIndex(index);
-        if (size == length) 
+        if (index < 0 || index > length)
+            throw new IndexOutOfBoundsException("invalid index: " + index);
+        if (size == length) {
             throw new RuntimeException("array is full");
+        }
 
         for (int i = size - 1; i >= index; i--)
             arr[i + 1] = arr[i];
