@@ -42,4 +42,7 @@ public interface LinkedListADT<D> {
     default void rotate() {
         // do nothing by default
     }
+
+    static <D> void display(LinkedListADT<D> llist){
+    }
 }

@@ -7,6 +7,11 @@ public abstract class Queue<D> implements QueueADT<D> {
     protected int front;
     protected int size;
 
+    protected void checkEmpty(){
+        if (isEmpty())
+            throw new RuntimeException("queue is empty");
+        return;
+    }
     public Queue() {
         front = -1;
         size = 0;
@@ -19,7 +24,7 @@ public abstract class Queue<D> implements QueueADT<D> {
     public boolean isEmpty() {
         return size == 0;
     }
-    
+
 
     public void clear() {
         while (!isEmpty())

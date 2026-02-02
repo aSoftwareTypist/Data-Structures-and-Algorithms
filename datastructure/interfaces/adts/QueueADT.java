@@ -6,11 +6,15 @@ public interface QueueADT<D> {
 
     boolean isEmpty();
 
-    void clear();
+    D getFront();
 
-    D front();
+    D getRear();
+
+    D dequeue();
 
     void enqueue(D element);
 
-    D dequeue();
+    void display();
+
+    void clear();
 }

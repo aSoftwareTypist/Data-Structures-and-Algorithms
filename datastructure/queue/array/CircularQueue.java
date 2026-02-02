@@ -3,18 +3,18 @@ package datastructure.queue.array;
 import datastructure.abstracts.Queue;
 import datastructure.arrays.Array;
 
-public class LinearQueue<D> extends Queue<D> {
+public class CircularQueue<D> extends Queue<D> {
 
     protected Array<D> queue;
     protected int capacity;
 
-    public LinearQueue(int capacity) {
+    public CircularQueue(int capacity) {
         this.capacity = capacity;
         queue = new Array<D>(capacity);
     }
 
     public boolean isFull() {
-        return (front + size) == (capacity);
+        return size == capacity;
     }
 
     public D getFront() {
@@ -24,19 +24,8 @@ public class LinearQueue<D> extends Queue<D> {
 
     public D getRear() {
         checkEmpty();
-
-        int rear = (front + size - 1);
+        int rear = (front + size - 1) % capacity;
         return queue.get(rear);
-    }
-
-    public void enqueue(D element) {
-        if (isFull())
-            throw new RuntimeException("queue overflown");
-
-        if (isEmpty())
-            front++;
-        queue.insert(size, element);
-        size++;
     }
 
     public D dequeue() {
@@ -46,17 +35,36 @@ public class LinearQueue<D> extends Queue<D> {
         queue.set(front, null);
 
         size--;
-        front++;
-        if (front == capacity)
+
+        front = (front + 1) % capacity;
+        if (isEmpty())
             front = -1;
+
         return temp;
+    }
+
+    public void enqueue(D data) {
+        if (isFull())
+            throw new RuntimeException("queue overflown");
+
+        if (isEmpty())
+            front++;
+        int rear = (front + size - 1) % capacity;
+        queue.insert(rear, data);
+        size++;
     }
 
     public void display() {
         checkEmpty();
-        
+
         System.out.println("Queue (size: " + size + ") : ");
-        for (int i = front; i < (front + size); i++)
+        int i = front;
+        for (; i != (front + size - 1) % capacity; i = (i + 1) % capacity)
+            System.out.print(queue.get(i) + "\t");
+
+        if (i == (front + size - 1) % capacity)
             System.out.print(queue.get(i));
+        System.out.println();
     }
+
 }

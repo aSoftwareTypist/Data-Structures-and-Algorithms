@@ -3,7 +3,7 @@ package datastructure.abstracts;
 import datastructure.interfaces.adts.LinkedListADT;
 
 public abstract class LinkedList<D> implements LinkedListADT<D> {
-    protected int length;
+    public int length;
     protected Node<D> headNode;
     protected Node<D> tailNode;
 
@@ -118,4 +118,11 @@ public abstract class LinkedList<D> implements LinkedListADT<D> {
         return tailNode.getElement();
     };
 
+    public static <D> void display(LinkedList<D> llist) {
+        System.out.println("\n Linkedlist (length: " + llist.length + ") ");
+        for (int i = 0; i < llist.length; i++)
+            System.out.print(llist.getNthNodeElement(i) + "\t");
+
+        System.out.println();
+    }
 }
