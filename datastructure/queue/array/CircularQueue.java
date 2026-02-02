@@ -5,8 +5,8 @@ import datastructure.arrays.Array;
 
 public class CircularQueue<D> extends Queue<D> {
 
-    protected Array<D> queue;
-    protected int capacity;
+    private Array<D> queue;
+    private int capacity;
 
     public CircularQueue(int capacity) {
         this.capacity = capacity;
@@ -49,8 +49,8 @@ public class CircularQueue<D> extends Queue<D> {
 
         if (isEmpty())
             front++;
-        int rear = (front + size - 1) % capacity;
-        queue.insert(rear, data);
+        int rear = (front + size) % capacity;
+        queue.set(rear, data);
         size++;
     }
 

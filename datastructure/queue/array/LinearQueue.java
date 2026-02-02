@@ -5,8 +5,8 @@ import datastructure.arrays.Array;
 
 public class LinearQueue<D> extends Queue<D> {
 
-    protected Array<D> queue;
-    protected int capacity;
+    private Array<D> queue;
+    private int capacity;
 
     public LinearQueue(int capacity) {
         this.capacity = capacity;
@@ -14,7 +14,7 @@ public class LinearQueue<D> extends Queue<D> {
     }
 
     public boolean isFull() {
-        return (front + size) == (capacity);
+        return size == capacity;
     }
 
     public D getFront() {
@@ -24,19 +24,7 @@ public class LinearQueue<D> extends Queue<D> {
 
     public D getRear() {
         checkEmpty();
-
-        int rear = (front + size - 1);
-        return queue.get(rear);
-    }
-
-    public void enqueue(D element) {
-        if (isFull())
-            throw new RuntimeException("queue overflown");
-
-        if (isEmpty())
-            front++;
-        queue.insert(size, element);
-        size++;
+        return queue.get(front + size - 1);
     }
 
     public D dequeue() {
@@ -47,16 +35,26 @@ public class LinearQueue<D> extends Queue<D> {
 
         size--;
         front++;
-        if (front == capacity)
+        if (isEmpty())
             front = -1;
         return temp;
     }
 
+    public void enqueue(D element) {
+        if (isFull())
+            throw new RuntimeException("queue overflown");
+
+        if (isEmpty())
+            front++;
+        queue.set(front + size, element);
+        size++;
+    }
+
     public void display() {
         checkEmpty();
-        
+
         System.out.println("Queue (size: " + size + ") : ");
-        for (int i = front; i < (front + size); i++)
+        for (int i = front; i < front + size; i++)
             System.out.print(queue.get(i));
     }
 }

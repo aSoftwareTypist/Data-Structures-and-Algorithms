@@ -9,7 +9,7 @@ public abstract class Queue<D> implements QueueADT<D> {
 
     protected void checkEmpty(){
         if (isEmpty())
-            throw new RuntimeException("queue is empty");
+            throw new RuntimeException("queue underflown");
         return;
     }
     public Queue() {

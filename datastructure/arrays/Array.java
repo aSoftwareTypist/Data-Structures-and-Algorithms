@@ -21,7 +21,7 @@ public class Array<D> implements ArrayADT<D> {
     }
 
     private void checkIndex(int index) {
-        if (index < 0 || index >= size)
+        if (index < 0 || index >= length)
             throw new IndexOutOfBoundsException("invalid index: " + index);
 
     }
@@ -68,11 +68,9 @@ public class Array<D> implements ArrayADT<D> {
 
     public void insert(int index, D value) {
 
-        if (index < 0 || index > length)
-            throw new IndexOutOfBoundsException("invalid index: " + index);
-        if (size == length) {
+        checkIndex(index);
+        if (size == length) 
             throw new RuntimeException("array is full");
-        }
 
         for (int i = size - 1; i >= index; i--)
             arr[i + 1] = arr[i];

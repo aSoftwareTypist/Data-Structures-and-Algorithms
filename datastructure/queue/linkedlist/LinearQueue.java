@@ -6,11 +6,11 @@ import datastructure.linkedlists.Doubly;
 
 public class LinearQueue<D> extends Queue<D> {
 
-    protected LinkedList<D> queue;
+    private LinkedList<D> queue;
 
     public LinearQueue() {
         queue = new Doubly<D>();
-        size = queue.length;
+        size = 0;
     }
 
     public boolean isFull() {

@@ -1,95 +1,137 @@
 package datastructure;
 
-import datastructure.tests.*;
-import datastructure.queue.linkedlist.LinearQueue;;
+import datastructure.abstracts.Queue;
+import datastructure.queue.array.*;;
 
 public class TestProgram {
 
-        public static void testArrayQueue() {
+        public static void testQueue(Queue<Integer> q, String name) {
 
-                System.out.println("===== Testing LinearQueue (Array Implementation) =====");
+                System.out.println("\n===== Testing Queue : " + name + " =====");
 
-                LinearQueue<Integer> q = new LinearQueue<Integer>();
+                /* ---------- EMPTY QUEUE TESTS ---------- */
 
-                // 1. Test empty queue
                 System.out.println("1. isEmpty (expected true): " + q.isEmpty());
-                System.out.println("1. size (expected 0): " + q.size());
+                System.out.println("2. size (expected 0): " + q.size());
 
-                // 2. Dequeue on empty queue
                 try {
                         q.dequeue();
-                        System.out.println("2. Dequeue on empty: FAILED");
+                        System.out.println("3. Dequeue on empty: FAILED");
                 } catch (Exception e) {
-                        System.out.println("2. Dequeue on empty: PASSED (" + e.getMessage() + ")");
+                        System.out.println("3. Dequeue on empty: PASSED (" + e.getMessage() + ")");
                 }
 
-                // 3. Front on empty queue
                 try {
                         q.getFront();
-                        System.out.println("3. Front on empty: FAILED");
+                        System.out.println("4. getFront on empty: FAILED");
                 } catch (Exception e) {
-                        System.out.println("3. Front on empty: PASSED (" + e.getMessage() + ")");
+                        System.out.println("4. getFront on empty: PASSED (" + e.getMessage() + ")");
                 }
 
-                // 4. Enqueue elements
+                try {
+                        q.getRear();
+                        System.out.println("5. getRear on empty: FAILED");
+                } catch (Exception e) {
+                        System.out.println("5. getRear on empty: PASSED (" + e.getMessage() + ")");
+                }
+
+                /* ---------- ENQUEUE TESTS ---------- */
+
                 q.enqueue(10);
                 q.enqueue(20);
                 q.enqueue(30);
 
-                System.out.println("4. Enqueued 10, 20, 30");
+                System.out.println("6. Enqueued: 10, 20, 30");
 
-                // 5. Front element
-                System.out.println("5. front (expected 10): " + q.getFront());
+                System.out.println("7. getFront (expected 10): " + q.getFront());
+                System.out.println("8. getRear (expected 30): " + q.getRear());
+                System.out.println("9. size (expected 3): " + q.size());
 
-                // 6. Size check
-                System.out.println("6. size (expected 3): " + q.size());
+                /* ---------- FIFO ORDER TEST ---------- */
 
-                // 7. Fill the queue
-                q.enqueue(40);
-                q.enqueue(50);
+                System.out.println("10. dequeue (expected 10): " + q.dequeue());
+                System.out.println("11. dequeue (expected 20): " + q.dequeue());
 
-                // System.out.println("7. isFull (expected true): " + q.isFull());
+                System.out.println("12. getFront (expected 30): " + q.getFront());
+                System.out.println("13. size (expected 1): " + q.size());
 
-                // 8. Enqueue when full
-                try {
-                        q.enqueue(60);
-                        System.out.println("8. Enqueue on full queue: LinkedList queue implemented");
-                } catch (Exception e) {
-                        System.out.println("8. Enqueue on full queue: Array queue implemented (" + e.getMessage() + ")");
+                /* ---------- CLEAR TEST ---------- */
+
+                q.clear();
+                System.out.println("14. clear()");
+                System.out.println("15. isEmpty after clear (expected true): " + q.isEmpty());
+                System.out.println("16. size after clear (expected 0): " + q.size());
+
+                /* ---------- REUSABILITY TEST ---------- */
+
+                q.enqueue(99);
+                System.out.println("17. enqueue after clear (expected 99): " + q.getFront());
+
+                System.out.println("===== Generic Queue Tests Completed =====");
+        }
+
+        public static void testFixedCapacityQueue(Queue<Integer> q, int capacity) {
+
+                System.out.println("\n===== Testing Fixed Capacity Behavior =====");
+
+                for (int i = 1; i <= capacity; i++) {
+                        q.enqueue(i * 10);
                 }
 
-                // 9. Dequeue elements
-                System.out.println("9. dequeue (expected 10): " + q.dequeue());
-                System.out.println("9. dequeue (expected 20): " + q.dequeue());
+                System.out.println("1. Filled queue to capacity (" + capacity + ")");
+                System.out.println("2. isFull (expected true): " + q.isFull());
 
-                // 10. FIFO order check
-                System.out.println("10. front (expected 30): " + q.getFront());
-
-                // 11. Dequeue remaining elements
-                q.dequeue(); // 30
-                q.dequeue(); // 40
-                q.dequeue(); // 50
-
-                System.out.println("11. isEmpty (expected true): " + q.isEmpty());
-                System.out.println("11. size (expected 0): " + q.size());
-
-                // 12. Linear queue limitation test
                 try {
-                        q.dequeue();
-                        q.enqueue(70);
-                        System.out.println("12. Enqueue after full dequeue (Linear behavior): "
-                                        + "depends on implementation");
+                        q.enqueue(999);
+                        System.out.println("3. Enqueue on full queue: FAILED");
                 } catch (Exception e) {
-                        System.out.println("12. Enqueue after full dequeue: PASSED (" + e.getMessage() + ")");
+                        System.out.println("3. Enqueue on full queue: PASSED (" + e.getMessage() + ")");
                 }
 
-                System.out.println("===== All LinearQueue Tests Completed =====");
+                q.dequeue();
+                q.dequeue();
+
+                System.out.println("4. Dequeued two elements");
+
+                try {
+                        q.enqueue(777);
+                        q.enqueue(888);
+                        System.out.println("5. Enqueue after dequeue: PASSED (Circular or Resizable behavior)");
+                } catch (Exception e) {
+                        System.out.println("5. Enqueue after dequeue: FAILED (" + e.getMessage() + ")");
+                }
+
+                System.out.println("===== Fixed Capacity Tests Completed =====");
+        }
+
+        public static void testLinkedListQueue(Queue<Integer> q) {
+
+                System.out.println("\n===== Testing LinkedList Queue Behavior =====");
+
+                try {
+                        for (int i = 0; i < 1000; i++)
+                                q.enqueue(i);
+
+                        System.out.println("1. Enqueued 1000 elements: PASSED");
+                } catch (Exception e) {
+                        System.out.println("1. Overflow in LinkedList Queue: FAILED");
+                }
+
+                System.out.println("2. size (expected 1000): " + q.size());
+                System.out.println("===== LinkedList Queue Tests Completed =====");
         }
 
         public static void main(String[] args) {
-                // ArrayTest.testCases();
-                // StackTest.testStackArray();
-                StackTest.testStackArray();
-                // LinkedListTest.testProgram();
+
+                testQueue(new LinearQueue<Integer>(5), "Linear Queue (Array)");
+                testFixedCapacityQueue(new LinearQueue<Integer>(5), 5);
+
+                testQueue(new CircularQueue<Integer>(5), "Circular Queue (Array)");
+                testFixedCapacityQueue(new CircularQueue<Integer>(5), 5);
+
+                testQueue(new datastructure.queue.linkedlist.LinearQueue<Integer>(),
+                                "Linear Queue (LinkedList)");
+                testLinkedListQueue(new datastructure.queue.linkedlist.LinearQueue<Integer>());
         }
+
 }

@@ -6,6 +6,8 @@ public interface QueueADT<D> {
 
     boolean isEmpty();
 
+    boolean isFull();
+
     D getFront();
 
     D getRear();
