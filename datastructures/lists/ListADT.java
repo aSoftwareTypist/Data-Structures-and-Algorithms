@@ -1,4 +1,4 @@
-package datastructure.lists;
+package datastructures.lists;
 
 public interface ListADT<E> {
   int size();

@@ -1,10 +1,45 @@
-package datastructure.lists;
+package datastructures.lists;
+
+import datastructures.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayList<E> implements ListADT<E> {
 
   private static final int CAPACITY = 5;
   private int size = 0;
   private E[] array;
+
+  private class ArrayIterable implements Iterator<E> {
+
+    private int position = 0;
+    private boolean callRemove = false;
+
+    public boolean hasNext() {
+      return position == size;
+    }
+
+    public E next() {
+
+      if (size == position)
+        throw new NoSuchElementException("no next element");
+
+      callRemove = true;
+      return array[position++];
+    }
+
+    public E remove() {
+
+      if (!callRemove)
+        throw new IllegalStateException("nothing to remove");
+
+      E temp = ArrayList.this.remove(position - 1);
+
+      callRemove = false;
+      position--;
+
+      return null;
+    }
+  }
 
   public ArrayList() {
     this(CAPACITY);
@@ -89,5 +124,9 @@ public class ArrayList<E> implements ListADT<E> {
       newArray[i] = array[i];
 
     array = newArray;
+  }
+
+  public Iterator<E> Iterator() {
+    return new ArrayIterable();
   }
 }
