@@ -1,4 +1,4 @@
-package datastructure.trees;
+package datastructures.trees;
 
 import datastructure.abstracts.AbstractTree;
 

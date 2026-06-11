@@ -1,10 +1,10 @@
-import datastructure.TestProgram;
+import datastructures.TestProgram;
 
 public class Main {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        TestProgram.main(args);
-    }
-    
+    TestProgram.main(args);
+  }
+
 }

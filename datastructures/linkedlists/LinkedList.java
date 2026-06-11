@@ -1,4 +1,4 @@
-package datastructure.abstracts;
+package datastructures.abstracts;
 
 import datastructure.interfaces.adts.LinkedListADT;
 
