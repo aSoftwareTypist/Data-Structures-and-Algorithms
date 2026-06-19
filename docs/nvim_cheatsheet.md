@@ -1,226 +1,218 @@
-LazyVim Cheat Sheet
 
-> Daily Java / DSA workflow
+# Neovim Basics Notes
 
----
+## 1. Starting Vim (`starting`)
 
-# 📂 Files
-
-| Action          | Command           |
-| --------------- | ----------------- |
-| Open Explorer   | `Space e`         |
-| Find File       | `Space Space`     |
-| Open File       | `:e File.java`    |
-| Create New File | `:e NewFile.java` |
-| Save            | `:w`              |
-| Save & Quit     | `:wq`             |
-
-### Notes
-
-```bash
-cd ~/DSA
-nvim .
-```
-
-After opening your project, you usually don't need full paths.
-
-```vim
-:e TwoSum.java
-:e Arrays/TwoSum.java
-```
+| Command         | Description            |
+| --------------- | ---------------------- |
+| `nvim file.txt` | Open a file            |
+| `nvim .`        | Open current directory |
+| `:help`         | Open help              |
+| `:q`            | Quit                   |
+| `:q!`           | Quit without saving    |
+| `:w`            | Save                   |
+| `:wq`           | Save and quit          |
+| `ZZ`            | Save and quit          |
+| `:help <topic>` | Open help topic        |
 
 ---
 
-# 🪟 Splits
+## 2. Editing Files (`edit-files`)
 
-| Action                      | Command          |
-| --------------------------- | ---------------- |
-| Vertical Split              | `:vsp`           |
-| Horizontal Split            | `:sp`            |
-| Open File in Vertical Split | `:vsp File.java` |
-| Equalize Sizes              | `Ctrl+w =`       |
-
-### Example
-
-```vim
-:vsp Solution.java
-:vsp Notes.md
-```
-
-Result:
-
-```text
-| Problem.md | Solution.java | Notes.md |
-```
+| Command          | Description           |
+| ---------------- | --------------------- |
+| `:e file.txt`    | Open file             |
+| `:w`             | Save file             |
+| `:w newfile.txt` | Save as               |
+| `:q`             | Quit current window   |
+| `:wq`            | Save and quit         |
+| `:e!`            | Reload file from disk |
 
 ---
 
-# 🔄 Split Navigation
+## 3. Movement (`motion.txt`)
 
-| Direction | LazyVim  |
-| --------- | -------- |
-| Left      | `Ctrl+h` |
-| Down      | `Ctrl+j` |
-| Up        | `Ctrl+k` |
-| Right     | `Ctrl+l` |
+### Basic Movement
 
----
+| Command | Description |
+| ------- | ----------- |
+| `h`     | Left        |
+| `j`     | Down        |
+| `k`     | Up          |
+| `l`     | Right       |
 
-# ✂️ Select • Copy • Paste
+### Faster Movement
 
-| Action         | Command |
-| -------------- | ------- |
-| Select Text    | `v`     |
-| Select Lines   | `V`     |
-| Select All     | `ggVG`  |
-| Copy Selection | `y`     |
-| Copy Line      | `yy`    |
-| Paste After    | `p`     |
-| Paste Before   | `P`     |
+| Command | Description               |
+| ------- | ------------------------- |
+| `w`     | Next word                 |
+| `b`     | Previous word             |
+| `e`     | End of word               |
+| `0`     | Start of line             |
+| `^`     | First non-blank character |
+| `$`     | End of line               |
+| `gg`    | First line                |
+| `G`     | Last line                 |
 
-### System Clipboard
+### Useful
 
-| Action            | Command   |
-| ----------------- | --------- |
-| Copy              | `"+y`     |
-| Paste             | `"+p`     |
-| Select All + Copy | `ggVG"+y` |
-
----
-
-# 🗑️ Delete
-
-| Action                | Command |
-| --------------------- | ------- |
-| Delete Selection      | `d`     |
-| Delete Line           | `dd`    |
-| Delete 5 Lines        | `5dd`   |
-| Delete Word           | `dw`    |
-| Delete to End of Line | `D`     |
-| Select All + Delete   | `ggVGd` |
+| Command  | Description      |
+| -------- | ---------------- |
+| `%`      | Matching bracket |
+| `Ctrl-o` | Jump back        |
+| `Ctrl-i` | Jump forward     |
 
 ---
 
-# ❌ Close
+## 4. Scrolling (`scrolling`)
 
-| Action                 | Command     |
-| ---------------------- | ----------- |
-| Close Split            | `:q`        |
-| Force Close            | `:q!`       |
-| Close Buffer           | `:bd`       |
-| Close Buffer (LazyVim) | `Space b d` |
-| Quit Everything        | `:qa`       |
-| Force Quit Everything  | `:qa!`      |
-
----
-
-# ⚡ Movement
-
-| Action         | Command |
-| -------------- | ------- |
-| Top of File    | `gg`    |
-| Bottom of File | `G`     |
-| Start of Line  | `0`     |
-| End of Line    | `$`     |
-| Next Word      | `w`     |
-| Previous Word  | `b`     |
+| Command  | Description    |
+| -------- | -------------- |
+| `Ctrl-d` | Half page down |
+| `Ctrl-u` | Half page up   |
+| `Ctrl-f` | Full page down |
+| `Ctrl-b` | Full page up   |
+| `zz`     | Center cursor  |
 
 ---
 
-# 🏆 Daily Workflow
+## 5. Insert Mode (`insert.txt`)
 
-```bash
-cd ~/DSA
-nvim .
-```
-
-```text
-Space Space     → Find file
-Ctrl+h/j/k/l    → Move between splits
-:vsp            → New vertical split
-:w              → Save
-:bd             → Close file
-```
-
-# 🏆 Daily DSA Workflow
-
-## Open Project
-
-```bash
-nvim ~/DSA
-```
+| Command | Description           |
+| ------- | --------------------- |
+| `i`     | Insert before cursor  |
+| `a`     | Insert after cursor   |
+| `I`     | Start of line       |
+| `A`     | End of line           |
+| `o`     | New line below        |
+| `O`     | New line above        |
+| `Esc`   | Return to Normal mode |
 
 ---
 
-## Open Explorer
+## 6. Change & Delete (`change.txt`)
 
-```text
-Space e
-```
+### Delete
 
----
+| Command | Description           |
+| ------- | --------------------- |
+| `x`     | Delete character      |
+| `dd`    | Delete line           |
+| `dw`    | Delete word           |
+| `d$`    | Delete to end of line |
 
-## Find Problem File
+### Change
 
-```text
-Space Space
-```
-
----
-
-## Create 3 Splits
-
-```vim
-:vsp
-:vsp
-```
-
-Layout:
-
-```text
-| Problem.md | Solution.java | Notes.md |
-```
+| Command | Description           |
+| ------- | --------------------- |
+| `cw`    | Change word           |
+| `cc`    | Change line           |
+| `C`     | Change to end of line |
+| `r`     | Replace one character |
 
 ---
 
-## Navigate
+## 7. Undo / Redo (`undo-redo`)
 
-```text
-Ctrl+h
-Ctrl+l
-```
-
----
-
-## Save
-
-```vim
-:w
-```
+| Command  | Description |
+| -------- | ----------- |
+| `u`      | Undo        |
+| `Ctrl-r` | Redo        |
 
 ---
 
-## Save & Quit
+## 8. Repeat (`repeat.txt`)
 
-```vim
-:wq
-```
+| Command | Description                |
+| ------- | -------------------------- |
+| `.`     | Repeat last change         |
+| `3dd`   | Repeat delete line 3 times |
+| `5j`    | Move down 5 lines          |
+
+Numbers before commands repeat them.
 
 ---
 
-# 🧠 Top 10 Commands To Memorize
+## 9. Visual Mode (`visual-mode`)
 
-```text
-i
-Esc
-:vsp
-Ctrl+h
-Ctrl+l
-yy
-dd
-p
-ggVG
-Space Space
-```
+| Command  | Description         |
+| -------- | ------------------- |
+| `v`      | Character selection |
+| `V`      | Line selection      |
+| `Ctrl-v` | Block selection     |
+| `y`      | Copy selection      |
+| `d`      | Delete selection    |
+| `>`      | Indent              |
+| `<`      | Unindent            |
 
-Master these first. They cover most daily DSA and Java development work in Neovim.
+---
+
+## 10. Various Useful Commands (`various`)
+
+### Copy / Paste
+
+| Command | Description  |
+| ------- | ------------ |
+| `yy`    | Copy line    |
+| `p`     | Paste after  |
+| `P`     | Paste before |
+
+### Search
+
+| Command | Description     |
+| ------- | --------------- |
+| `/word` | Search forward  |
+| `?word` | Search backward |
+| `n`     | Next match      |
+| `N`     | Previous match  |
+
+### Line Numbers
+
+| Command               | Description       |
+| --------------------- | ----------------- |
+| `:set number`         | Show line numbers |
+| `:set relativenumber` | Relative numbers  |
+
+---
+
+## 11. Crash Recovery (`crash-recovery`)
+
+| Command    | Description         |
+| ---------- | ------------------- |
+| `:recover` | Recover file        |
+| `nvim -r`  | List recovery files |
+
+---
+
+## Window
+
+| Command | Description |
+|---|---|
+|`:split` | Open horizontal split, creates a new window below the current one.|
+|`:vsplit` | Open vertical split, creates a new window beside the current one.|
+|`Ctrl-w w` | Switch window, moves focus to the next open window.|
+
+
+# Daily Essentials
+
+Learn these first:
+
+`h j k l`
+`w b e`
+`0 $`
+`gg G`
+`i a o`
+`Esc`
+`dd`
+`yy`
+`p`
+`u`
+`Ctrl-r`
+`/search`
+`n`
+`:w`
+`:q`
+`:wq`
+`.`
+
+Master these before learning advanced motions, macros, registers, marks, buffers, tabs, and windows.

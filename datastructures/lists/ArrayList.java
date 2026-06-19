@@ -15,7 +15,7 @@ public class ArrayList<E> implements ListADT<E> {
     private boolean callRemove = false;
 
     public boolean hasNext() {
-      return position == size;
+      return position < size;
     }
 
     public E next() {
@@ -37,7 +37,7 @@ public class ArrayList<E> implements ListADT<E> {
       callRemove = false;
       position--;
 
-      return null;
+      return temp;
     }
   }
 

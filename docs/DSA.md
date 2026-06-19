@@ -5,13 +5,13 @@
 ### Introduction
 
 A tree is an abstract data type that stores elements hierarchically. With the exception of the top element, each element in a tree has a `parent` element and zero or more `children` elements. We typically call the top element the `root` of the tree, but it is drawn as the highest element, with the other elements being connected below (just the opposite of a botanical tree).
-The two nodes tha are children of the same parent are `siblings`. A node is called `external` if it has no children where as `internal` nodes have one or more children
+The nodes that are children of the same parent are `siblings`. A node is called `external` if it has no children where as `internal` nodes have one or more children
 
 #### Formal definition
 
 We define a tree 'T' as a set of nodes storing elements such that the nodes have a parent-child relationship that satisfies the following properties:
 • If T is nonempty, it has a special node, called the root of T , that has no parent.
-• Each node v of T different from the root has a unique parent node w; every
+• Each node v of T, different from the root has a unique parent node w; every
 node with parent w is a child of w.
 
 #### Edges and paths in trees
@@ -266,7 +266,7 @@ One of the most important properties of proper binary trees is:
 
     nE = nI + 1
 
-where:
+Where:
 
 nE = number of external nodes,
 nI = number of internal nodes
@@ -291,4 +291,92 @@ nE = nI + 1
 3 = 2 + 1
 
 > This relationship only holds for proper binary trees and not for improper or general trees.
+
+
+### Tree Traversals Algorithms
+
+A tree traversal is a systematic process of visiting every position (node) in a tree exactly once. 
+The action performed during a visit depends on the application, such as printing values, computing results, evaluating expressions, or updating information. Common traversal methods are preorder, postorder, and breadth-first traversal. 
+Traversal algorithms define the order in which nodes are visited.
+
+#### Inorder, Postorder and Preorder Tree Traversals
+
+##### Preorder Traversal
+
+In preorder tree traversal algorithm, the node is visited first before any of its children. If the tree is ordered, then the subtrees are traversed according to the order of the children.
+
+**Algorithm** preorder(pos):
+  perform the visit action in this line
+  for each child c in children(pos):
+    preorder(pos)
+
+**Example** 
+```text
+Tree:
+     A
+   / | \
+  B  C  D
+ / \
+E   F
+
+Post order sequence: A -> B -> E -> F -> C -> D
+```
+
+Preorder traversal follows a top-down approach and is useful for tree copying, directory listing, and generating prefix expressions.
+
+Its time complexity is O(n), where n is the number of nodes. The recursion stack requires O(h) space, where h is the height of the tree.
+
+##### Postorder Traversal
+
+In post order tree traversal algorithm, the parent nodes are visited at last, all the children nodes are visited before the node itself. 
+
+**Algorithm** postorder(pos):
+  for each child c in children(pos):
+    postorder(c)
+   perform the visit action.
+
+**Example** 
+
+```text
+Tree:
+     A
+   / | \
+  B  C  D
+ / \
+E   F
+
+Postorder sequence: E → F → B → C → D → A
+```
+
+Postorder traversal follows a bottom-up approach and is useful for deleting trees, computing directory sizes, and evaluating expression trees. 
+
+The time complexity is O(n), and the recursion stack requires O(h) space.
+
+##### Inorder Traversal
+
+Inorder tree traversal algorithm  is a special type of algorithm for binary trees. In this algorithm, a node is visited between the traversal of its left subtree and right subtree.
+
+Algorithm inorder(pos):
+  if pos has left child *lc* then
+    inorder(lc)
+  perform the visiting action here
+  if pos has right child rc then
+    inorder(lc)
+
+```text
+Tree:
+    A
+   / \
+  B   D
+ / \
+E   F
+
+Inorder sequence: E → B → F → A → D
+```
+
+In inorder the parent node lies in between the two children of binary tree.
+
+#### Breath-First Search Traversals
+
+#### Binary Search Trees
 
