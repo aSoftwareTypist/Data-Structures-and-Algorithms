@@ -1,6 +1,6 @@
-package datastructure.arrays;
+package datastructures.arrays;
 
-import datastructure.interfaces.adts.ArrayADT;
+import datastructures.arrays.ArrayADT;
 
 public class Array<D> implements ArrayADT<D> {
 

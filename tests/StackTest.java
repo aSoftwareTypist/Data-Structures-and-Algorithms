@@ -1,8 +1,8 @@
-package datastructure.tests;
+package tests;
 
-import datastructure.abstracts.Stack;
-import datastructure.stacks.StackArray;
-import datastructure.stacks.StackLinkedList;
+import datastructures.stacks.Stack;
+import datastructures.stacks.StackArray;
+import datastructures.stacks.StackLinkedList;
 
 public class StackTest {
 

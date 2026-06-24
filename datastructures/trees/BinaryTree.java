@@ -51,6 +51,10 @@ public class BinaryTree<E> {
     }
   }
 
+  private class ElementIterator implements Iterator<E> {
+  
+    
+  }
   protected Node<E> root;
   private int size;
 

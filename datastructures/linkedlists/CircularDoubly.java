@@ -1,6 +1,6 @@
-package datastructure.linkedlists;
+package datastructures.linkedlists;
 
-import datastructure.abstracts.LinkedList;
+import datastructures.linkedlists.LinkedList;
 
 public class CircularDoubly<D> extends LinkedList<D> {
 

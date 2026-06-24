@@ -1,7 +1,7 @@
-package datastructure.queue.array;
+package datastructures.queue.array;
 
-import datastructure.abstracts.Queue;
-import datastructure.arrays.Array;
+import datastructures.queue.Queue;
+import datastructures.arrays.Array;
 
 public class CircularQueue<D> extends Queue<D> {
 

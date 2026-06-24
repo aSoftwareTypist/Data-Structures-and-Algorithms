@@ -1,8 +1,8 @@
-package datastructure.stacks;
+package datastructures.stacks;
 
-import datastructure.abstracts.LinkedList;
-import datastructure.abstracts.Stack;
-import datastructure.linkedlists.Singly;
+import datastructures.linkedlists.LinkedList;
+import datastructures.stacks.Stack;
+import datastructures.linkedlists.Singly;
 
 public class StackLinkedList<D> extends Stack<D> {
 

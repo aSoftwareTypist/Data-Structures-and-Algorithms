@@ -1,6 +1,6 @@
-package datastructure.tests;
+package tests;
 
-import datastructure.arrays.Array;
+import datastructures.arrays.Array;
 
 public class ArrayTest {
 

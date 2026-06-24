@@ -1,8 +1,8 @@
-package datastructure.queue.linkedlist;
+package datastructures.queue.linkedlist;
 
-import datastructure.abstracts.LinkedList;
-import datastructure.abstracts.Queue;
-import datastructure.linkedlists.Doubly;
+import datastructures.linkedlists.LinkedList;
+import datastructures.queue.Queue;
+import datastructures.linkedlists.Doubly;
 
 public class LinearQueue<D> extends Queue<D> {
 

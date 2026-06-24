@@ -184,15 +184,6 @@ Numbers before commands repeat them.
 
 ---
 
-## Window
-
-| Command | Description |
-|---|---|
-|`:split` | Open horizontal split, creates a new window below the current one.|
-|`:vsplit` | Open vertical split, creates a new window beside the current one.|
-|`Ctrl-w w` | Switch window, moves focus to the next open window.|
-
-
 # Daily Essentials
 
 Learn these first:

@@ -1,7 +1,7 @@
-package datastructure;
+package tests;
 
-import datastructure.abstracts.Queue;
-import datastructure.queue.array.*;;
+import datastructures.queue.Queue;
+import datastructures.queue.array.*;
 
 public class TestProgram {
 
@@ -129,9 +129,9 @@ public class TestProgram {
                 testQueue(new CircularQueue<Integer>(5), "Circular Queue (Array)");
                 testFixedCapacityQueue(new CircularQueue<Integer>(5), 5);
 
-                testQueue(new datastructure.queue.linkedlist.LinearQueue<Integer>(),
+                testQueue(new datastructures.queue.linkedlist.LinearQueue<Integer>(),
                                 "Linear Queue (LinkedList)");
-                testLinkedListQueue(new datastructure.queue.linkedlist.LinearQueue<Integer>());
+                testLinkedListQueue(new datastructures.queue.linkedlist.LinearQueue<Integer>());
         }
 
 }

@@ -1,7 +1,7 @@
-package datastructure.tests;
+package tests;
 
-import datastructure.abstracts.LinkedList;
-import datastructure.linkedlists.Singly;
+import datastructures.linkedlists.LinkedList;
+import datastructures.linkedlists.Singly;
 
 public class LinkedListTest {
     public static void testProgram() {

@@ -1,6 +1,6 @@
-package datastructure.abstracts;
+package datastructures.queue;
 
-import datastructure.interfaces.adts.QueueADT;
+import datastructures.queue.QueueADT;
 
 public abstract class Queue<D> implements QueueADT<D> {
 

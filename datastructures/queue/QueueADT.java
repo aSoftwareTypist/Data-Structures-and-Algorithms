@@ -1,4 +1,4 @@
-package datastructure.interfaces.adts;
+package datastructures.queue;
 
 public interface QueueADT<D> {
 

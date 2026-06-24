@@ -16,7 +16,7 @@ node with parent w is a child of w.
 
 #### Edges and paths in trees
 
-An edge is the pair of of nodes (u, v) where u is the parent of v, or vice-versa. In simple, it means it is a direct connection between two nodes, usually between a parent and a child. 
+An edge is the pair of of nodes (u, v) where u is the parent of v, or vice-versa. In simple, it means it is a direct connection between two nodes, usually between a parent and a child.
 
 Similarly, A path is a sequence of nodes where each consecutive pair is connected by an edge. Paths are useful for navigating through trees and understanding relationships between nodes.
 
@@ -24,7 +24,7 @@ Similarly, A path is a sequence of nodes where each consecutive pair is connecte
 
 In a normal tree, children of a node may simply exist without any special order.But in an ordered tree, the position of each child matters. An ordered tree is a tree in which the children of every node have a specific linear order.
 
-The ordering of children is commonly represented visually from left to right. Nodes that share the same parent are called siblings, and in an ordered tree, siblings appear in a fixed sequence. Ordered trees are widely used in applications such as file systems, expression trees, XML/HTML documents, and menu structures where the position of elements is important. 
+The ordering of children is commonly represented visually from left to right. Nodes that share the same parent are called siblings, and in an ordered tree, siblings appear in a fixed sequence. Ordered trees are widely used in applications such as file systems, expression trees, XML/HTML documents, and menu structures where the position of elements is important.
 
 ### The Tree Abstract Data Type
 
@@ -147,14 +147,16 @@ In a binary tree, all nodes having the same depth belong to the same level. The 
 
 Maximum nodes at level d:
 
-    2^d
+`2^d`
 
 Example:
 
-    Level 0 → 1 node
-    Level 1 → 2 nodes
-    Level 2 → 4 nodes
-    Level 3 → 8 nodes
+```text
+    Level 0 -> 1 node
+    Level 1 -> 2 nodes
+    Level 2 -> 4 nodes
+    Level 3 -> 8 nodes
+```
 
 This exponential growth is one of the most important structural properties of binary trees.
 
@@ -162,6 +164,7 @@ This exponential growth is one of the most important structural properties of bi
 
 Let:
 
+```text
     n = total number of nodes,
 
     nE = number of external (leaf) nodes,
@@ -169,6 +172,7 @@ Let:
     nI = number of internal nodes,
 
     h = height of the tree
+```
 
 Several important mathematical relationships exist between these quantities.
 
@@ -176,12 +180,12 @@ Several important mathematical relationships exist between these quantities.
 
 For any nonempty binary tree, the minimuma and maximum nodes satisfy:
 
-    h + 1 ≤ n ≤ 2 ^ (h + 1) − 1
-
+`h + 1 ≤ n ≤ 2 ^ (h + 1) − 1`
 The minimum number of nodes occurs when the tree becomes completely skewed like a linked list. In such a case, every level contains exactly one node.
 
-Example:
+**Example**:
 
+```text
     A
      \
       B
@@ -189,11 +193,13 @@ Example:
         C
 
 If height = 2, then minimum nodes = 3.
+```
 
 The maximum number of nodes occurs when the tree is perfectly filled at every level.
 
-Example:
+**Example**:
 
+```text
          A
        /   \
       B     C
@@ -207,12 +213,13 @@ For height 2, the total number of nodes is:
 which satisfies:
 
 2 ^ (2 + 1) - 1 = 7
+```
 
 ##### Property 2: Relationship Between Height and External Nodes
 
 For any binary tree, the height and external (leaf) node satisfy:
 
-    1 ≤ nE ≤ 2 ^ h
+`1 ≤ nE ≤ 2 ^ h`
 
 meaning, minimum leaves = 1 and maximum leaves occur at deepest level.
 
@@ -222,13 +229,11 @@ For height 3:
 
 So the maximum possible leaf nodes are 8.
 
-
 ##### Property 3: Relationship Between Height and Internal Nodes
 
 For any binary tree, the internal node (nI) satisfy :
 
-    h ≤ nI ≤ 2 ^ (h − 1)
-
+`h ≤ nI ≤ 2 ^ (h − 1)`
 
 The minimum number of internal nodes occurs in a skewed tree, while the maximum occurs in a complete binary tree.
 
@@ -244,27 +249,27 @@ Maximum internal nodes:
 
 The height of a binary tree satisfies:
 
-    log( n  + 1 ) − 1 ≤ h ≤ n − 1
+`log( n  + 1 ) − 1 ≤ h ≤ n − 1`
 
 The left side represents the best-case height, which occurs in balanced trees. The right side represents the worst-case height, which occurs in skewed trees.
 
 Balanced trees have logarithmic height, making operations efficient:
 
-Search → O(log n)
-Insertion → O(log n)
-Deletion → O(log n)
+Search -> O(log n)
+Insertion -> O(log n)
+Deletion -> O(log n)
 
 Skewed trees behave similarly to linked lists:
 
-Search → O(n)
-Insertion → O(n)
-Deletion → O(n)
+Search -> O(n)
+Insertion -> O(n)
+Deletion -> O(n)
 
 #### Relationship Between Internal and External Nodes
 
 One of the most important properties of proper binary trees is:
 
-    nE = nI + 1
+`nE = nI + 1`
 
 Where:
 
@@ -273,8 +278,9 @@ nI = number of internal nodes
 
 This means the number of leaf nodes is always exactly one more than the number of internal nodes.
 
-Example:
+**Example**:
 
+```text
         A
        / \
       B   C
@@ -289,14 +295,14 @@ Verification:
 
 nE = nI + 1
 3 = 2 + 1
+```
 
 > This relationship only holds for proper binary trees and not for improper or general trees.
 
-
 ### Tree Traversals Algorithms
 
-A tree traversal is a systematic process of visiting every position (node) in a tree exactly once. 
-The action performed during a visit depends on the application, such as printing values, computing results, evaluating expressions, or updating information. Common traversal methods are preorder, postorder, and breadth-first traversal. 
+A tree traversal is a systematic process of visiting every position (node) in a tree exactly once.
+The action performed during a visit depends on the application, such as printing values, computing results, evaluating expressions, or updating information. Common traversal methods are preorder, postorder, and breadth-first traversal.
 Traversal algorithms define the order in which nodes are visited.
 
 #### Inorder, Postorder and Preorder Tree Traversals
@@ -310,7 +316,8 @@ In preorder tree traversal algorithm, the node is visited first before any of it
   for each child c in children(pos):
     preorder(pos)
 
-**Example** 
+**Example** :
+
 ```text
 Tree:
      A
@@ -328,14 +335,14 @@ Its time complexity is O(n), where n is the number of nodes. The recursion stack
 
 ##### Postorder Traversal
 
-In post order tree traversal algorithm, the parent nodes are visited at last, all the children nodes are visited before the node itself. 
+In post order tree traversal algorithm, the parent nodes are visited at last, all the children nodes are visited before the node itself.
 
 **Algorithm** postorder(pos):
   for each child c in children(pos):
     postorder(c)
    perform the visit action.
 
-**Example** 
+**Example**:
 
 ```text
 Tree:
@@ -345,10 +352,10 @@ Tree:
  / \
 E   F
 
-Postorder sequence: E → F → B → C → D → A
+Postorder sequence: E -> F -> B -> C -> D -> A
 ```
 
-Postorder traversal follows a bottom-up approach and is useful for deleting trees, computing directory sizes, and evaluating expression trees. 
+Postorder traversal follows a bottom-up approach and is useful for deleting trees, computing directory sizes, and evaluating expression trees.
 
 The time complexity is O(n), and the recursion stack requires O(h) space.
 
@@ -371,7 +378,7 @@ Tree:
  / \
 E   F
 
-Inorder sequence: E → B → F → A → D
+Inorder sequence: E -> B -> F -> A -> D
 ```
 
 In inorder the parent node lies in between the two children of binary tree.
@@ -379,4 +386,3 @@ In inorder the parent node lies in between the two children of binary tree.
 #### Breath-First Search Traversals
 
 #### Binary Search Trees
-

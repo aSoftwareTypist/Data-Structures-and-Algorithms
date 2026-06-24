@@ -1,7 +1,6 @@
-package datastructure.linkedlists;
-// import _4LinkedLists.LinkedList;
+package datastructures.linkedlists;
 
-import datastructure.abstracts.LinkedList;
+import datastructures.linkedlists.LinkedList;
 
 public class Singly<D> extends LinkedList<D> {
 

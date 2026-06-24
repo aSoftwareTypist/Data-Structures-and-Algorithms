@@ -1,4 +1,4 @@
-package datastructure.interfaces.adts;
+package datastructures.arrays;
 
 // ArrayADT.java
 public interface ArrayADT<D> {

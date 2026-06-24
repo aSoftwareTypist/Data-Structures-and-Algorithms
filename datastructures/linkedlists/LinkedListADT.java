@@ -1,4 +1,4 @@
-package datastructure.interfaces.adts;
+package datastructures.linkedlists;
 
 public interface LinkedListADT<D> {
 
